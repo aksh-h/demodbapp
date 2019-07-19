@@ -1,0 +1,55 @@
+﻿@model List<demo1.Models.Person>
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Count > 0)
+{
+    <div class="container">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var nik in Model)
+                {
+                    <tr>
+                        <td class="align-content-center">@nik.Id</td>
+                        <td class="align-content-center">@nik.FirstName</td>
+                        <td class="align-content-center">@nik.LastName</td>
+                        <td>
+                            <button type="button" class="btn btn-primary glyphicon glyphicon-edit edit" id="@nik.Id-edit"> Edit</button>
+                            <button type="button" class="btn btn-danger glyphicon glyphicon-remove dlt" id="@nik.Id-dlt"> Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<div class="">
+    <div class="col-sm-12 p-3">
+        <button id="updatebtn" class="btn btn-primary">Update</button>
+        <button id="add" class="btn btn-primary">Add</button>
+    </div>
+    <input type="hidden" id="hndEditId" />
+</div>
+
+<div class="col-sm-12">
+    <div class="col-sm-6">
+        <input type="text" class="form-control" id="firstName" placeholder="First Name" />
+    </div>
+    <div class="col-sm-6">
+        <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/AppScript/local.js"></script>
